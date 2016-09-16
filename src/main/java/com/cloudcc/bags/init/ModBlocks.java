@@ -24,7 +24,7 @@ public class ModBlocks {
 
     public static void register(){
 
-        registerBlock(chest);
+        registerBlock(chest); //gg
         GameRegistry.registerTileEntity(TileEntityBlockChest.class, "block_chest");
 
     }
