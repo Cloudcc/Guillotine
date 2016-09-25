@@ -1,22 +1,33 @@
-package com.cloudcc.bags.world;
+package com.cloudcc.bags.item;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDoor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
-
-import java.util.Random;
 
 /**
- * Created by hi112 on 19.09.2016.
+ * Created by hi112 on 25.09.2016.
  */
-public class House extends WorldGenerator {
+public class ItemStructureSpawner extends Item {
+
+    public ItemStructureSpawner(){
+        this.setUnlocalizedName("structure_spawner");
+        this.setCreativeTab(CreativeTabs.MISC);
+        this.maxStackSize = 1;
+    }
+
     @Override
-    public boolean generate(World worldIn, Random rand, BlockPos position) {
-        int x = position.getX();
-        int y = position.getY();
-        int z = position.getZ();
+    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
         //Bottom Layer
         for(int i = 1; i <= 12; i++) {
             for (int j = 1; j <= 12; j++) {
@@ -69,7 +80,7 @@ public class House extends WorldGenerator {
         }
 
 
-        for(int i = 6; i <= 9; i++) {
+       for(int i = 6; i <= 9; i++) {
             for (int j = 3; j <= 5; j++) {
                 worldIn.setBlockState(new BlockPos(x + i, y + j, z + 4), Blocks.PLANKS.getStateFromMeta(5));
             }
@@ -97,7 +108,7 @@ public class House extends WorldGenerator {
                 worldIn.setBlockState(new BlockPos(x + j, y + 5, z + i), Blocks.PLANKS.getStateFromMeta(5));
             }
         }
-        //  ItemDoor.placeDoor(worldIn, new BlockPos(x + 5, y + 3, z + 6),EnumFacing.EAST, Blocks.DARK_OAK_DOOR, false);
+      //  ItemDoor.placeDoor(worldIn, new BlockPos(x + 5, y + 3, z + 6),EnumFacing.EAST, Blocks.DARK_OAK_DOOR, false);
 
         worldIn.setBlockState(new BlockPos(x + 5, y + 4, z + 5), Blocks.TORCH.getStateFromMeta(2));
         worldIn.setBlockState(new BlockPos(x + 5, y + 4, z + 7), Blocks.TORCH.getStateFromMeta(2));
@@ -138,28 +149,7 @@ public class House extends WorldGenerator {
                 worldIn.setBlockState(new BlockPos(x + j, y + 6, z + i), Blocks.PLANKS.getStateFromMeta(3));
             }
         }
-        return true;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //Front
-
-
-
+        return EnumActionResult.SUCCESS;
 
     }
 }

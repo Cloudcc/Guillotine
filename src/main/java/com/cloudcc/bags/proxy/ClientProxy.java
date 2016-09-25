@@ -3,6 +3,7 @@ package com.cloudcc.bags.proxy;
 import com.cloudcc.bags.Bags;
 import com.cloudcc.bags.handlers.GuiHandler;
 import com.cloudcc.bags.init.ModBlocks;
+import com.cloudcc.bags.init.ModItems;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 /**
@@ -13,6 +14,7 @@ public class ClientProxy implements CommonProxy {
     public void init() {
 
         ModBlocks.registerRender();
+        ModItems.registerRenders();
 
     }
 

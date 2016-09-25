@@ -1,6 +1,7 @@
 package com.cloudcc.bags;
 
 import com.cloudcc.bags.init.ModBlocks;
+import com.cloudcc.bags.init.ModItems;
 import com.cloudcc.bags.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -12,16 +13,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 /**
  * Created by hi112 on 27.08.2016.
  */
-@Mod(modid = Bags.MODID,version = Bags.VERSION, name = Bags.NAME)
+@Mod(modid = Reference.MODID,version = Reference.VERSION, name = Reference.NAME)
 public class Bags {
 
-    public static final String MODID = "Bags";
-    public static final String NAME = "Bags";
-    public static final String VERSION = "0.1";
-    public static final String CLIENT_PROXY = "com.cloudcc.bags.proxy.ClientProxy";
-    public static final String SERVER_PROXY = "com.cloudcc.bags.proxy.ServerProxy";
 
-    @SidedProxy(clientSide = Bags.CLIENT_PROXY, serverSide = Bags.SERVER_PROXY )
+
+    @SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.SERVER_PROXY )
     public static CommonProxy proxy;
 
     @Mod.Instance
@@ -32,6 +29,8 @@ public class Bags {
         System.out.println("Hallo Minecraft");
         ModBlocks.init();
         ModBlocks.register();
+        ModItems.init();
+        ModItems.register();
 
     }
 
